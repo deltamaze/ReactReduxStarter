@@ -23,12 +23,13 @@ CounterScreen = connect(
 
 // pagesrouter
 import SignInPage from './signin';
+import PrivateRoute from '../components/privateRoute';
 import { Link, Route, Switch } from 'react-router-dom';
 const PageRouter = props => (
     <div>
       <Switch>
         <Route path="/" exact component={HomeScreen} />
-        <Route path="/counter" component={CounterScreen} />
+        <PrivateRoute path="/counter" component={CounterScreen} />
         <Route path="/signin" component={SignInPage} />
         <Route path="*" component={NotFoundScreen} />
       </Switch>
