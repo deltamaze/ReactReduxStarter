@@ -1,12 +1,19 @@
 import React from 'react';
-// HomeScreen
-const HomeScreen = props => <h1>Hello</h1>;
-// 404Screen
-const NotFoundScreen = props => <h1>404</h1>;
-// Counter
 import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
-let CounterScreen = props  => (
+import SignInPage from './signin';
+import PrivateRoute from '../components/privateRoute';
+
+
+// HomeScreen
+const HomeScreen = () => <h1>Hello</h1>;
+// 404Screen
+const NotFoundScreen = () => <h1>404</h1>;
+// Counter
+
+
+let CounterScreen = props => (
   <div>
     <h1>Counter: {props.counter}</h1>
     <button onClick={props.increment}>Increment</button>
@@ -22,18 +29,16 @@ CounterScreen = connect(
 )(CounterScreen);
 
 // pagesrouter
-import SignInPage from './signin';
-import PrivateRoute from '../components/privateRoute';
-import { Link, Route, Switch } from 'react-router-dom';
-const PageRouter = props => (
-    <div>
-      <Switch>
-        <Route path="/" exact component={HomeScreen} />
-        <PrivateRoute path="/counter" component={CounterScreen} />
-        <Route path="/signin" component={SignInPage} />
-        <Route path="*" component={NotFoundScreen} />
-      </Switch>
-    </div>
+
+const PageRouter = () => (
+  <div>
+    <Switch>
+      <Route path="/" exact component={HomeScreen} />
+      <PrivateRoute path="/counter" component={CounterScreen} />
+      <Route path="/signin" component={SignInPage} />
+      <Route path="*" component={NotFoundScreen} />
+    </Switch>
+  </div>
 );
 
 export default PageRouter;
